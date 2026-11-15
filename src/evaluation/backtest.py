@@ -20,6 +20,7 @@ def simulate_single_part_policy(
     order_param: int,
     initial_stock: int | None = None,
     fulfillment_mode: str = "backorder",
+    penalty_divisor: float = 30.0,
 ) -> dict:
     """Simulate 365-day daily inventory under backorder (primary) or lost_sales sensitivity mode."""
     assert fulfillment_mode in ("backorder", "lost_sales"), "Invalid fulfillment_mode"
@@ -70,7 +71,7 @@ def simulate_single_part_policy(
             if backorder_qty > 0:
                 stockout_days += 1
                 # Gunluk acik siparis (backorder-day) cezasi
-                base_shortage_cost += (backorder_qty / 30.0) * base_pen_unit
+                base_shortage_cost += (backorder_qty / penalty_divisor) * base_pen_unit
         else:
             if unmet_today > 0:
                 stockout_days += 1
@@ -159,6 +160,7 @@ def _evaluate_mode(
     crn_lt_map: dict[str, np.ndarray],
     init_stock_map: dict[str, int],
     fulfillment_mode: str,
+    penalty_divisor: float = 30.0,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     part_records = []
     for pol_name, pol_type, param_map in policies:
@@ -175,6 +177,7 @@ def _evaluate_mode(
                 order_param=ord_p,
                 initial_stock=init_stock_map[pid],
                 fulfillment_mode=fulfillment_mode,
+                penalty_divisor=penalty_divisor,
             )
             part_records.append({
                 "policy": pol_name,
@@ -242,20 +245,21 @@ def run_backtest_evaluation(
     crn_lt_map = {pid: rng.choice(lt_pool_map[pid], size=400, replace=True) for pid in parts["part_id"]}
 
     # 1. Birincil Model: Backorder (T?z?k Sec. 4 & DEC-02 ile birebir uyumlu)
-    sum_bo, det_bo = _evaluate_mode(meta, policies, test_demand_map, crn_lt_map, init_stock_map, "backorder")
+    sum_bo, det_bo = _evaluate_mode(meta, policies, test_demand_map, crn_lt_map, init_stock_map, "backorder", 30.0)
+    sum_bo7, _ = _evaluate_mode(meta, policies, test_demand_map, crn_lt_map, init_stock_map, "backorder", 7.0)
     # 2. Duyarlilik Modeli: Lost Sales (Kayip Satis)
     sum_ls, _ = _evaluate_mode(meta, policies, test_demand_map, crn_lt_map, init_stock_map, "lost_sales")
 
     mode_comp = sum_bo[["policy", "total_cost_Base_M", "portfolio_fill_rate_pct", "vital_avg_stockout_days"]].rename(
         columns={
-            "total_cost_Base_M": "backorder_cost_M",
+            "total_cost_Base_M": "backorder_div30_M",
             "portfolio_fill_rate_pct": "backorder_fill_rate_pct",
             "vital_avg_stockout_days": "backorder_vital_so_days",
         }
-    ).merge(
+    ).merge(sum_bo7[["policy", "total_cost_Base_M"]].rename(columns={"total_cost_Base_M": "backorder_div7_M"}), on="policy").merge(
         sum_ls[["policy", "total_cost_Base_M", "portfolio_fill_rate_pct", "vital_avg_stockout_days"]].rename(
             columns={
-                "total_cost_Base_M": "lost_sales_cost_M",
+                "total_cost_Base_M": "one_time_shortage_M",
                 "portfolio_fill_rate_pct": "lost_sales_fill_rate_pct",
                 "vital_avg_stockout_days": "lost_sales_vital_so_days",
             }
@@ -265,7 +269,7 @@ def run_backtest_evaluation(
 
     # 3. Tasarruf Yogunlasmasi ve 20-Tohum Dayaniklilik Analizi (Backorder)
     cur_p = det_bo[det_bo["policy"] == "MinMax_Current_1.5_3.0m"].copy()
-    opt_p = det_bo[det_bo["policy"] == "Bootstrap_CSL95"].copy()
+    opt_p = det_bo[det_bo["policy"] == "Bootstrap_CSL98"].copy()
     cur_p["cur_tot"] = cur_p["holding_cost"] + cur_p["ordering_cost"] + cur_p["base_shortage_cost"]
     opt_p["opt_tot"] = opt_p["holding_cost"] + opt_p["ordering_cost"] + opt_p["base_shortage_cost"]
     m_sav = cur_p[["part_id", "cur_tot"]].merge(opt_p[["part_id", "opt_tot"]], on="part_id")
@@ -281,14 +285,14 @@ def run_backtest_evaluation(
 
     seed_sav_vs_mm = []
     seed_sav_vs_cls = []
-    core_pols = [p for p in policies if p[0] in ("MinMax_Current_1.5_3.0m", "Classical_Hist_CSL95", "Bootstrap_CSL95")]
+    core_pols = [p for p in policies if p[0] in ("MinMax_Current_1.5_3.0m", "Classical_Hist_CSL95", "Bootstrap_CSL98")]
     for s in range(100, 120):
         r_s = np.random.default_rng(s)
         lt_s = {pid: r_s.choice(lt_pool_map[pid], size=400, replace=True) for pid in parts["part_id"]}
         s_df, _ = _evaluate_mode(meta, core_pols, test_demand_map, lt_s, init_stock_map, "backorder")
         c_mm = float(s_df[s_df["policy"] == "MinMax_Current_1.5_3.0m"]["total_cost_Base_M"].iloc[0])
         c_cl = float(s_df[s_df["policy"] == "Classical_Hist_CSL95"]["total_cost_Base_M"].iloc[0])
-        c_bt = float(s_df[s_df["policy"] == "Bootstrap_CSL95"]["total_cost_Base_M"].iloc[0])
+        c_bt = float(s_df[s_df["policy"] == "Bootstrap_CSL98"]["total_cost_Base_M"].iloc[0])
         seed_sav_vs_mm.append((c_mm - c_bt) / c_mm * 100.0)
         seed_sav_vs_cls.append((c_cl - c_bt) / c_cl * 100.0)
 

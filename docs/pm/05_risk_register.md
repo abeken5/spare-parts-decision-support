@@ -1,16 +1,16 @@
-# Risk Kayd? (Risk Register)
+# Risk Kaydı (Risk Register)
 
-| ID | Risk Tan?m? | Kategori | Olas?l?k | Etki | Azaltma Plan? | Durum |
+| ID | Risk Tanımı | Kategori | Olasılık | Etki | Azaltma Planı (Mitigation) | Durum |
 | :--- | :--- | :---: | :---: | :---: | :--- | :---: |
-| **R-01** | Ceza maliyeti varsay?msal | Metodoloji | Y?ksek | Y?ksek | VED bazl? ceza ve 3 senaryolu duyarl?l?k raporland?. | Azalt?ld? |
-| **R-02** | Ger?ek MRO verisi k?s?t? | Veri | Y?ksek | Orta | Sabit seed (`42`) sentetik veri ?reteci kuruldu (`DEC-02`). | Ger?ekle?ti |
-| **R-03** | Model karma??kl??? riski | Teknik | Orta | Orta | %2 basitlik tolerans? ile segment bazl? kazanan se?ildi. | Azalt?ld? |
-| **R-04** | Kullan?c? benimseme riski | UX | Orta | Y?ksek | Mevcut Min/Max ile `(s, Q)` fark? yan yana sunuldu. | ?zleniyor |
-| **R-05** | Dar e?itim penceresi | Teknik | Orta | Orta | 730 g?n sabitlendi; s?f?r tahminde `Q>=1` taban? eklendi. | Azalt?ld? |
-| **R-06** | Sentetik veri totolojisi | Metodoloji | Orta | Y?ksek | `regime_shift` ve `obsolescence` desenleri eklendi (`CHG-02`). | Azalt?ld? |
-| **R-07** | Saman adam baseline riski | Metodoloji | Orta | Y?ksek | Min/Max gridi (`1/2..3/6 ay`) ve klasik `(s, Q)` eklendi. | Azalt?ld? |
-| **R-08** | Do?rulama g?r?lt?s? | Teknik | Orta | Orta | Rolling-origin do?rulama ve segment kazanan? eklendi. | Ger?ekle?ti |
-| **R-09** | TSB eskime avantaj? | Metodoloji | Y?ksek | D???k | 16 eskime par?as?n?n hi?birinde TSB kazanmad?. | Kapat?ld? |
-| **R-10** | CSL vs Fill Rate kar???kl??? | Metodoloji | Orta | Orta | Guardrail gere?i `%96.0` Fill Rate veren `CSL %98` se?ildi. | Azalt?ld? |
-| **R-11** | Tasarruf yo?unla?mas? | Metodoloji | Y?ksek | Orta | ?lk 5 (%14.2) ve ilk 10 (%5.7) hari? sonu?lar raporland?. | Ger?ekle?ti |
-| **R-12** | Ceza tan?m? duyarl?l??? | Metodoloji | Orta | Y?ksek | `/30`, `/7` ve tek seferlik cezalar kar??la?t?r?ld? (`DEC-11`). | Azalt?ld? |
+| **R-01** | **Ceza maliyeti varsayımsal:** Yüksek ceza politikayı yapay avantajlı gösterebilir. | Metodoloji | Yüksek | Yüksek | VED bazlı ceza ve 3 senaryolu (0.5x/1.0x/2.0x) duyarlılık analizi raporlandı. | Azaltıldı |
+| **R-02** | **Gerçek MRO verisi erişim kısıtı:** Gizlilik nedeniyle açık veri bulunamaması. | Veri | Yüksek | Orta | Sabit seed'li (`42`) sentetik veri üreteci geliştirildi (`DEC-02`, `CHG-02`). | Gerçekleşti |
+| **R-03** | **Model karmaşıklığı riski:** Croston/TSB'nin aşırı seyrek parçalarda MA'yı yenememesi. | Teknik | Orta | Orta | %2 basitlik toleransı ile segment bazlı kazanan seçildi. | Azaltıldı |
+| **R-04** | **Benimseme riski:** Planlamacıların simülasyona güvenmeyip Excel Min/Max'a dönmesi. | UX / Süreç | Orta | Yüksek | Mevcut Min/Max ile önerilen `(s, Q)` TL ve açık sipariş günü farkı yan yana sunuldu. | İzleniyor |
+| **R-05** | **Dar eğitim penceresi:** Aşırı seyrek parçalarda gözlem sayısının az olması. | Teknik | Orta | Orta | 730 günlük kalibrasyon sabitlendi; sıfır tahminde `Q>=1` taban kuralı eklendi. | Azaltıldı |
+| **R-06** | **Sentetik veri totolojisi:** Sabit dağılıma uyan modelin yapay kazanması. | Metodoloji | Orta | Yüksek | `regime_shift` ve `obsolescence` desenleri eklendi (`CHG-02`). | Azaltıldı |
+| **R-07** | **Saman adam baseline riski:** Mevcut Min/Max'ın zayıf kurgulanması. | Metodoloji | Orta | Yüksek | Min/Max duyarlılık gridi (`1/2`, `1.5/3`, `2/4`, `3/6 ay`) ve klasik `(s, Q)` eklendi (`DEC-06`, `DEC-10`). | Azaltıldı |
+| **R-08** | **Doğrulama gürültüsü:** 0-2 talep olayı gören parçalarda seçim oynaklığı. | Teknik | Orta | Orta | Rolling-origin doğrulama ve segment bazlı kazanan üretildi. | Gerçekleşti |
+| **R-09** | **TSB eskime avantajı:** Eskime parçasında TSB'nin yapay öne çıkması. | Metodoloji | Yüksek | Düşük | 16 eskime parçasının hiçbirinde TSB kazanmadı; şeffaf raporlandı. | Kapatıldı |
+| **R-10** | **CSL vs. Fill Rate karışıklığı:** Hizmet seviyesi tanımlarının karışması. | Metodoloji | Orta | Orta | Guardrail gereği `%96.0` Fill Rate veren `CSL %98` seçildi. | Azaltıldı |
+| **R-11** | **Tasarruf yoğunlaşması:** Portföy tasarrufunun birkaç Vital-Lumpy parçaya yaslanması. | Metodoloji | Yüksek | Orta | İlk 5 (%14.2) ve ilk 10 (%5.7) parça hariç sonuçlar raporlandı. | Gerçekleşti |
+| **R-12** | **Ceza tanımı duyarlılığı:** Günlük `/30` yerine `/7` veya tek seferlik ceza seçimi. | Metodoloji | Orta | Yüksek | Üç ceza tanımı karşılaştırıldı (`DEC-11`); `CSL %98` hepsinde kazandı. | Azaltıldı |
