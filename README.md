@@ -1,4 +1,6 @@
-﻿# ✈️ Savunma & Havacılık MRO Yedek Parça Envanter Optimizasyonu ve Karar Destek Sistemi
+﻿[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mro-spare-parts-dss.streamlit.app)
+
+# ✈️ Savunma & Havacılık MRO Yedek Parça Envanter Optimizasyonu ve Karar Destek Sistemi
 
 Kesikli (*intermittent*) ve ani sıçramalı (*lumpy*) talep desenlerine sahip **200 kritik MRO yedek parçası** için talep segmentasyonu, uzman zaman serisi tahmin yarışması, **10.000 senaryolu Ampirik Blok Bootstrap** simülasyonu ve **365 günlük Ortak Rastgele Sayılar (CRN) backtest** değerlendirmesi sunan uçtan uca karar destek sistemi.
 
@@ -29,3 +31,4 @@ pip install -r requirements.txt
 pytest
 streamlit run app/streamlit_app.py
 ``
+
