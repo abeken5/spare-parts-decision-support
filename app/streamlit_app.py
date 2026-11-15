@@ -26,7 +26,7 @@ def load_core_tables(db_path: str = DB_PATH) -> dict[str, pd.DataFrame]:
 def classify_dynamic_action(row: pd.Series) -> str:
     if row["annual_demand_qty"] <= 0.5 or row["forecast_monthly_part"] < 0.15:
         return "Düşük Hız / Eskime İzleme (Manuel Onay)"
-    if row["rop_selected"] > row["min_stock"] and (row["ved_class"] == "V" or row["cur_stockout_days"] > 0):
+    if row["rop_selected"] > row["min_stock"] and row["ved_class"] == "V":
         return "Kritik Stok Artışı (ROP Yükselt)"
     if row["rop_selected"] < row["min_stock"]:
         return "Aşırı Stoğu Erit (Sermaye Çöz)"
@@ -53,7 +53,7 @@ st.sidebar.header("🎛️ Politika & Risk Parametreleri")
 target_csl = st.sidebar.select_slider(
     "Hedef Döngü Hizmet Seviyesi (Target CSL)",
     options=[0.85, 0.90, 0.95, 0.98, 0.99],
-    value=0.95,
+    value=0.98,
     format_func=lambda x: f"%{int(round(x * 100))}",
     help="CSL tedarik süresinde stoksuzluk yaşamama olasılığıdır; gerçekleşen talep karşılama oranı (Fill Rate) ayrıca ölçülür.",
 )

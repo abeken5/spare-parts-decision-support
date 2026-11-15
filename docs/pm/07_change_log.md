@@ -1,9 +1,9 @@
-﻿# Değişiklik Kaydı (Change Log)
+# Değişiklik Kaydı (Change Log)
 
-| ID | Tarih | İlgili Alan | Planlanan | Gerçekleşen | Nedeni |
+| ID | Tarih | Bileşen | Önceki Durum | Yeni Durum | Gerekçe |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **CHG-01** | 2026-11-14 | Takvim | 6-8 hafta esnek taslak | **6 hafta sıkılaştırılmış sprint planı** | Haftalık net kilometre taşlarıyla portföy teslimatını hızlandırmak. |
-| **CHG-02** | 2026-11-15 | Sentetik Veri Üreteci | Sabit dağılımlı talep üretimi | **%15 regime shift ve %10 obsolescence desenleri eklendi** | Sentetik veri döngüselliği (totoloji) riskini (R-06) azaltmak. |
-| **CHG-03** | 2026-11-15 | Tahmin Seçim Kriteri | Tek başına MASE | **Birincil kriter RMSSE (%2 basitlik toleransı) + Bias takibi** | Seyrek talepte medyanın sıfır olması nedeniyle MASE'in düşük tahmini ödüllendirmesini önlemek. |
-| **CHG-04** | 2026-11-15 | Teslimat Takvimi | 6 haftal?k yay?l? takvim | **14?15 Kas?m yo?unla?t?r?lm?? teslimat** | Tek ki?ilik portf?y geli?tirmede kilometre ta?lar? 2 g?nde tamamland?. |
-| **CHG-05** | 2026-11-15 | Backtest Motoru | Tek modlu sim?lasyon | **Ger?ek Backorder (birincil) + Lost Sales (duyarl?l?k)** | T?z?k Sec. 4 ve DEC-02 ile tam kod uyumu ve yo?unla?ma raporu i?in. |
+| **CHG-01** | 2026-11-14 | Veri Kapsamı | 500 SKU / 5 yıl | **200 SKU / 1.095 gün (2 yıl eğitim + 1 yıl test)** | İnteraktif simülasyon hızı ve sızıntısız test ayrımı (`DEC-05`). |
+| **CHG-02** | 2026-11-15 | Sentetik Üreteç | Sabit talep | **`regime_shift` ve `obsolescence` desenleri** | Totoloji riskini (`R-06`) ve TSB modelini test etmek için. |
+| **CHG-03** | 2026-11-15 | Tahmin Kriteri | MASE / MAPE | **RMSSE + %2 basitlik toleransı** | Seyrek talepte sıfır medyan yanılgısını önlemek için (`DEC-07`). |
+| **CHG-04** | 2026-11-15 | Teslimat Takvimi | 6 haftalık yayılı | **14–15 Kasım yoğunlaştırılmış teslimat** | Tek kişilik portföy geliştirmede kilometre taşları 2 günde tamamlandı. |
+| **CHG-05** | 2026-11-15 | Backtest & Ceza | Tek modlu simülasyon | **Gerçek Backorder (`/30`, `/7`) + Tek Seferlik duyarlılık ve `CSL %98`** | Tüzük uyumu, guardrail (`%96.0` Fill Rate) ve ceza tanımı sağlamlığı (`DEC-11`). |
