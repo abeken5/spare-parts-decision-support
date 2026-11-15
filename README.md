@@ -1,3 +1,4 @@
+<img width="1854" height="910" alt="image" src="https://github.com/user-attachments/assets/0fafff90-adc7-4b11-97b1-c9c7d5415986" />
 ﻿[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mro-spare-parts-dss.streamlit.app)
 
 # ✈️ Savunma & Havacılık MRO Yedek Parça Envanter Optimizasyonu ve Karar Destek Sistemi
