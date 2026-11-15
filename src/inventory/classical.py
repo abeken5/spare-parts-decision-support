@@ -88,9 +88,9 @@ def build_classical_policies(
         rop_hist = calculate_rop(d_hist, lt_m, ss_hist)
         eoq_hist = calculate_eoq(d_hist * 365.0, unit_c)
 
-        # Variant B: Forecast-Informed Classical (winning forecast daily rate)
+        # Variant B: Forecast-Informed Classical (winning forecast daily rate + CV-scaled std)
         d_fc = float(r["forecast_daily_part"])
-        d_std_fc = d_std * (d_fc / d_hist) if d_hist > 0 else d_std`r`n
+        d_std_fc = d_std * (d_fc / d_hist) if d_hist > 0 else d_std
         ss_fc = calculate_safety_stock(d_fc, d_std_fc, lt_m, lt_s, csl=csl)
         rop_fc = calculate_rop(d_fc, lt_m, ss_fc)
         eoq_fc = calculate_eoq(d_fc * 365.0, unit_c)
@@ -132,4 +132,3 @@ if __name__ == "__main__":
         .round(2)
         .to_string()
     )
-
