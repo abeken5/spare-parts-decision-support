@@ -12,5 +12,5 @@
 | **R-08** | **Doğrulama gürültüsü:** 0-2 talep olayı gören parçalarda seçim oynaklığı. | Teknik | Orta | Orta | Rolling-origin doğrulama ve segment bazlı kazanan üretildi. | Gerçekleşti |
 | **R-09** | **TSB eskime avantajı:** Eskime parçasında TSB'nin yapay öne çıkması. | Metodoloji | Yüksek | Düşük | 16 eskime parçasının hiçbirinde TSB kazanmadı; şeffaf raporlandı. | Kapatıldı |
 | **R-10** | **CSL vs. Fill Rate karışıklığı:** Hizmet seviyesi tanımlarının karışması. | Metodoloji | Orta | Orta | Guardrail gereği `%96.0` Fill Rate veren `CSL %98` seçildi. | Azaltıldı |
-| **R-11** | **Tasarruf yoğunlaşması:** Portföy tasarrufunun birkaç Vital-Lumpy parçaya yaslanması. | Metodoloji | Yüksek | Orta | İlk 5 (%14.2) ve ilk 10 (%5.7) parça hariç sonuçlar raporlandı. | Gerçekleşti |
-| **R-12** | **Ceza tanımı duyarlılığı:** Günlük `/30` yerine `/7` veya tek seferlik ceza seçimi. | Metodoloji | Orta | Yüksek | Üç ceza tanımı karşılaştırıldı (`DEC-11`); `CSL %98` hepsinde kazandı. | Azaltıldı |
+| **R-11** | **Tasarruf yoğunlaşması:** Portföy tasarrufunun birkaç Vital-Lumpy parçaya yaslanması. | Metodoloji | Yüksek | Orta | İlk 5 (%11.2) ve ilk 10 (%3.2) parça hariç sonuçlar raporlandı. | Gerçekleşti |
+| **R-12** | **Ceza tanımı duyarlılığı:** Günlük `/30` yerine `/7` veya kayıp satış ceza seçimi. | Metodoloji | Orta | Yüksek | Üç ceza tanımı karşılaştırıldı (`DEC-11`); `CSL %98` hepsinde kazandı. | Azaltıldı |
