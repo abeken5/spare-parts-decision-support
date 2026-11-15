@@ -36,3 +36,8 @@
 ## Sprint 4 Retrospektifi
 - **Tarih:** 2026-11-15
 - **Sonuc:** 200 SKU aksiyon plani, yonetici brifingi, Streamlit arayuzu ve final README tamamlandi (19/19 test).
+
+## Sprint 5 Retrospektifi (Ba??ms?z Denetim ve Kapan??)
+- **Tarih:** 2026-11-15
+- **Ne ?yi Gitti?** Backtest motoru T?z?k (`DEC-02`) ile uyumlu ger?ek **Backorder** bor? takibine ge?irildi; ilk 5/10 par?a hari? yo?unla?ma ve 20-tohum aral?klar? kodla hesapland?; aksiyon plan?ndaki test s?z?nt?s? temizlendi.
+- **Not:** Erratic s?n?f?nda `n=2` par?a bulundu?u i?in s?n?f ortalamalar? ihtiyatla yorumlanm??t?r.

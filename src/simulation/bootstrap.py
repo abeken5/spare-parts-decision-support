@@ -1,9 +1,9 @@
-﻿from pathlib import Path
+from pathlib import Path
 import sqlite3
 import numpy as np
 import pandas as pd
 
-DEFAULT_CSL_LEVELS = (0.85, 0.90, 0.95, 0.98, 0.99)
+DEFAULT_CSL_LEVELS = (0.85, 0.90, 0.95, 0.98, 0.99, 0.995)
 N_SIMULATIONS = 10_000
 RANDOM_SEED = 42
 
@@ -25,7 +25,6 @@ def simulate_block_bootstrap_lt_demand(
     if n_days == 0 or len(lts) == 0:
         return np.zeros(n_sims, dtype=float)
 
-    # Prefix sum allows O(1) contiguous window sum lookups across 10,000 draws
     csum = np.concatenate(([0.0], np.cumsum(demand)))
     sampled_lts = np.clip(rng.choice(lts, size=n_sims, replace=True), 1, n_days)
 
@@ -116,19 +115,4 @@ def run_bootstrap_simulation(
 
 
 if __name__ == "__main__":
-    boot_df = run_bootstrap_simulation()
-    with sqlite3.connect("data/processed/mro_inventory.db") as conn:
-        cls_df = pd.read_sql_query(
-            "SELECT part_id, sb_class, rop_classical_hist, rop_classical_fc FROM classical_policies;",
-            conn,
-        )
-
-    comp = cls_df.merge(boot_df[boot_df["target_csl"] == 0.95], on=["part_id", "sb_class"])
-    print("=== KLASIK NORMAL FORMUL vs. AMPIRIK BLOK BOOTSTRAP (CSL = %95, Ortalama ROP) ===")
-    summary = (
-        comp.groupby("sb_class")[["rop_classical_hist", "rop_classical_fc", "rop_bootstrap"]]
-        .mean()
-        .round(2)
-    )
-    summary["fark_emp_vs_klasik"] = (summary["rop_bootstrap"] - summary["rop_classical_hist"]).round(2)
-    print(summary.to_string())
+    run_bootstrap_simulation()
