@@ -1,3 +1,7 @@
-﻿# PROJECT_STATE.md
-- **Durum:** PROJE TAMAMLANDI (Sprint 0 - Sprint 4)
-- **Dogrulama:** 19/19 birim test basarili (pytest)
+﻿# PROJECT_STATE.md - Proje Canli Durum Ozeti (Inceleme Ciktisi)
+- **Son Guncelleme:** 2026-11-15 | **Durum:** PROJE TAMAMLANDI (Sprint 0 - Sprint 4)
+- **Canli Uygulama:** https://mro-spare-parts-dss.streamlit.app | **Testler:** 19/19 passed (pytest CI)
+- **Yapilanlar:** 200 SKU x 1.095 gun MRO veri uretici, SQLite analitik katmani, Syntetos-Boylan + ABC-XYZ/VED segmentasyonu (107/200 parca zaman kovasi kaymasi), 5 modelli tahmin yarismasi (RMSSE + %2 basitlik toleransi), 10.000 iterasyonlu Ampirik Blok Bootstrap, 365 gunluk CRN backtest, 200 SKU aksiyon plani ve Streamlit karar destek arayuzu.
+- **Son Metrik Sonuclari (365 Gun Kapali Test):** Mevcut Min/Max 82.72 M TL (Fill Rate %92.17, Vital stoksuzluk 2.32 gun) -> Onerilen Blok Bootstrap CSL %95 48.46 M TL (Fill Rate %95.52, Vital stoksuzluk 1.16 gun, **%41,4 maliyet tasarrufu**). Esit hizmet seviyesinde Min/Max'a gore **%28,5 daha az isletme sermayesi**.
+- **Alinan Kritik Kararlar (DEC-01..10):** Sentetik veri kullanimi (DEC-01), aylik tahmin + gunluk envanter simulasyonu hibrit yapisi (DEC-04), MAPE yerine RMSSE + %2 basitlik toleransi (DEC-06), parametrik olmayan Blok Bootstrap secimi (DEC-08), CRN backtest ve 3 kademeli VED ceza duyarliligi (DEC-09).
+- **Acik Riskler & Sinirliliklar:** Gercek ERP gecisinde stokastik tedarik suresi dagilimi, MOQ kisitlari ve stoksuz gunlerde sansurlenmis talep arindirmasi gerekir (R-03, R-07).

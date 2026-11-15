@@ -32,3 +32,18 @@ pytest
 streamlit run app/streamlit_app.py
 ``
 
+
+---
+
+## 2. Bu Proje Nasil Yonetildi? (PM Artefaktlari)
+
+Bu calisma yalnizca teknik bir modelleme degil, uctan uca proje yonetimi disipliniyle teslim edilmistir:
+- [Proje Tuzugu (Charter)](docs/pm/01_project_charter.md) — Is sorusu, kapsam ve basari kriterleri
+- [Veri Hazirlik Degerlendirmesi](docs/pm/02_data_readiness.md) — Sentetik veri gerekcesi (seed=42)
+- [WBS ve Zaman Cizelgesi](docs/pm/03_wbs_schedule.md) — Sprint 0-4 is kirilimi
+- [Paydas Haritasi ve RACI](docs/pm/04_stakeholder_raci.md) — Bakim, satin alma, finans ve yonetim rolleri
+- [Risk Kaydi (R-01..10)](docs/pm/05_risk_register.md) & [Degisiklik Kaydi](docs/pm/07_change_log.md)
+- [Mimari Karar Gunlugu (DEC-01..10)](docs/pm/06_decision_log.md) — Yontem secim gerekceleri
+- [Yonetici Karar Brifingi](docs/executive_decision_brief.md) & [Retrospektifler](docs/pm/08_retrospectives.md)
+
+> **Veri Seffaflik Notu:** Gizlilik ve erisim kisitlari nedeniyle projede savunma/havacilik MRO dinamiklerini (kesikli talep, rejim kaymasi ve kullanimdan kalkma) yansitan sabit tohumlu (seed=42) sentetik veri kullanilmistir.
