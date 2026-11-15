@@ -42,3 +42,10 @@ def test_eoq_minimum_bound_one():
     eoq = calculate_eoq(annual_demand=0.5, unit_cost=100000.0, ordering_cost=1500.0, holding_rate=0.22)
     assert eoq == 1
     assert calculate_rop(0.0, 10.0, 0.0) == 1
+
+
+def test_forecast_std_scaling_consistency():
+    # If forecasted demand doubles under constant CV, safety stock must double
+    ss_base = calculate_safety_stock(1.0, 0.8, 20.0, 4.0, csl=0.95)
+    ss_shifted = calculate_safety_stock(2.0, 1.6, 20.0, 4.0, csl=0.95)
+    assert np.isclose(ss_shifted, 2.0 * ss_base, rtol=1e-9)
