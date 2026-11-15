@@ -64,7 +64,7 @@ def write_executive_brief(action_df: pd.DataFrame, db_path: str = "data/processe
         "## 2. Ceza Tanımı Duyarlılığı (`DEC-11`)",
         f"- **Günlük `/30` Backorder Cezası:** CSL98 `{mc_98['backorder_div30_M']} M TL` vs. Min/Max 3/6 `{mc_36['backorder_div30_M']} M TL` (Mevcut: `{mc_mm['backorder_div30_M']} M TL`).",
         f"- **Haftalık `/7` Backorder Cezası:** CSL98 `{mc_98['backorder_div7_M']} M TL` vs. Min/Max 3/6 `{mc_36['backorder_div7_M']} M TL` (Mevcut: `{mc_mm['backorder_div7_M']} M TL`).",
-        f"- **Tek Seferlik Birim Ceza:** CSL98 `{mc_98['lost_sales_M']} M TL` vs. Min/Max 3/6 `{mc_36['lost_sales_M']} M TL` (Mevcut: `{mc_mm['lost_sales_M']} M TL`).", "",
+        f"- **Kayıp Satış (Lost Sales):** CSL98 `{mc_98['lost_sales_M']} M TL` vs. Min/Max 3/6 `{mc_36['lost_sales_M']} M TL` (Mevcut: `{mc_mm['lost_sales_M']} M TL`).", "",
         "## 3. Yoğunlaşma ve Çoklu Tohum Dayanıklılığı",
     ]
     for _, rr in robust.iterrows():

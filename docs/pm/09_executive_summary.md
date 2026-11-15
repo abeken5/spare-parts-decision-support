@@ -9,7 +9,7 @@
 ## 2. Ceza Tanımı Duyarlılığı (`DEC-11`)
 - **Günlük `/30` Backorder Cezası:** CSL98 `33.01 M TL` vs. Min/Max 3/6 `47.47 M TL` (Mevcut: `56.69 M TL`).
 - **Haftalık `/7` Backorder Cezası:** CSL98 `59.22 M TL` vs. Min/Max 3/6 `73.26 M TL` (Mevcut: `179.9 M TL`).
-- **Tek Seferlik Birim Ceza:** CSL98 `46.51 M TL` vs. Min/Max 3/6 `59.88 M TL` (Mevcut: `81.93 M TL`).
+- **Kayıp Satış (Lost Sales):** CSL98 `46.51 M TL` vs. Min/Max 3/6 `59.88 M TL` (Mevcut: `81.93 M TL`).
 
 ## 3. Yoğunlaşma ve Çoklu Tohum Dayanıklılığı
 - **Tum Portfoy Tasarruf (200 SKU, Backorder):** `%41.8` (23.68 M TL net tasarruf)

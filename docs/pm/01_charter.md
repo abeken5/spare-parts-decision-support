@@ -17,7 +17,7 @@ Bakım-onarım (MRO) operasyonlarında yedek parça talebi seyrek (*intermittent
 ## 4. Maliyet Modeli (`DEC-02`, `DEC-11`)
 1. **Elde Tutma Maliyeti:** Ortalama Eldeki Stok x Birim Maliyet x %22 (Yıllık).
 2. **Sipariş Maliyeti:** Verilen Sipariş Sayısı x 1.500 TL.
-3. **Stoksuzluk Cezası (Backorder):** Birincil modelde açık backorder miktarı aylık bekleme oranıyla (`/30`) günlük cezalandırılır; `/7` haftalık ve tek seferlik ceza tanımları duyarlılık olarak raporlanır (`DEC-11`).
+3. **Stoksuzluk Cezası (Backorder):** Birincil modelde açık backorder miktarı aylık bekleme oranıyla (`/30`) günlük cezalandırılır; `/7` haftalık ve Kayıp Satış (Lost Sales) modu duyarlılık olarak raporlanır (`DEC-11`).
 4. **Kapsam Dışı Maliyet:** Birim satın alma maliyeti backorder altında sabit kaldığı için hariç tutulmuştur.
 
 ### Kritiklik (VED) Bazlı Ceza ve 3 Senaryolu Duyarlılık Matrisi

@@ -11,6 +11,6 @@
 - **Aksiyon:** Gerçek Backorder motoru ve `CSL %98` optimumu (`56.69 -> 33.01 M TL`) `CHG-05` ve `DEC-11` ile kesinleştirildi.
 
 ## Sprint 4–5 Retrospektifi (Ürünleştirme & Harici Teknik Geri Bildirim)
-- **Ne İyi Gitti?** Ceza ve mod duyarlılığı (`/30`, `/7`, Kayıp Satış), yo?unlaşma analizi (ilk 5 parça hariç `%11,2`, ilk 10 hariç `%3,2`) ve sızıntısız ERP aksiyon planı tamamlandı (`20/20 birim test yeşil`).
-- **Ne İyileştirilecek?** Tüm README tablolarının elle yazım yerine do?rudan CSV çıktılarından üretilmesi standartlaştırıldı.
+- **Ne İyi Gitti?** Ceza ve mod duyarlılığı (`/30`, `/7`, Kayıp Satış), yoğunlaşma analizi (ilk 5 parça hariç `%11,2`, ilk 10 hariç `%3,2`) ve sızıntısız ERP aksiyon planı tamamlandı (`20/20 birim test yeşil`).
+- **Ne İyileştirilecek?** Tüm README tablolarının elle yazım yerine doğrudan CSV çıktılarından üretilmesi standartlaştırıldı.
 - **Aksiyon:** `Makefile` sekme formatı onarıldı ve tüm belgeler senkronize edildi (`CHG-06`).
