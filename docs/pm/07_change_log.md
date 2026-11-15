@@ -7,3 +7,4 @@
 | **CHG-03** | 2026-11-15 | Tahmin Kriteri | MASE / MAPE | **RMSSE + %2 basitlik toleransı** | Seyrek talepte sıfır medyan yanılgısını önlemek için (`DEC-07`). |
 | **CHG-04** | 2026-11-15 | Teslimat Takvimi | 6 haftalık yayılı | **14–15 Kasım yoğunlaştırılmış teslimat** | Tek kişilik portföy geliştirmede kilometre taşları 2 günde tamamlandı. |
 | **CHG-05** | 2026-11-15 | Backtest & Ceza | Tek modlu simülasyon | **Gerçek Backorder (`/30`, `/7`) + Tek Seferlik duyarlılık ve `CSL %98`** | Tüzük uyumu, guardrail (`%96.0` Fill Rate) ve ceza tanımı sağlamlığı (`DEC-11`). |
+| **CHG-06** | 2026-11-15 | Tüzük Kriter Kilidi & Politika Seçimi | Taslak %15 eşik notu & CSL %95 | **Kilitli %15 eşik + `Bootstrap_CSL98` ve Kayıp Satış duyarlılığı** | Harici teknik geri bildirim sonrası tüzük hedefi korunarak sonuç ayrı bölüme alındı (`DEC-11`). |

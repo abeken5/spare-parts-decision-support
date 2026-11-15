@@ -1,4 +1,4 @@
-policy,backorder_div30_M,backorder_fill_rate_pct,backorder_vital_so_days,backorder_div7_M,one_time_shortage_M,lost_sales_fill_rate_pct,lost_sales_vital_so_days
+policy,backorder_div30_M,backorder_fill_rate_pct,backorder_vital_so_days,backorder_div7_M,lost_sales_M,lost_sales_fill_rate_pct,lost_sales_vital_so_days
 MinMax_Current_1.5_3.0m,56.69,91.36,22.22,179.9,81.93,91.96,2.26
 MinMax_Grid_1.0_2.0m,91.24,81.91,51.64,347.86,134.19,84.57,5.3
 MinMax_Grid_2.0_4.0m,47.93,95.21,12.56,121.38,64.86,95.33,1.2

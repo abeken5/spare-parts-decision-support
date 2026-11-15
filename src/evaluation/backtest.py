@@ -259,7 +259,7 @@ def run_backtest_evaluation(
     ).merge(sum_bo7[["policy", "total_cost_Base_M"]].rename(columns={"total_cost_Base_M": "backorder_div7_M"}), on="policy").merge(
         sum_ls[["policy", "total_cost_Base_M", "portfolio_fill_rate_pct", "vital_avg_stockout_days"]].rename(
             columns={
-                "total_cost_Base_M": "one_time_shortage_M",
+                "total_cost_Base_M": "lost_sales_M",
                 "portfolio_fill_rate_pct": "lost_sales_fill_rate_pct",
                 "vital_avg_stockout_days": "lost_sales_vital_so_days",
             }
