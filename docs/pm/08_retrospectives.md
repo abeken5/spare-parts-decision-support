@@ -32,3 +32,7 @@
   - Tablo birleştirmelerinde ortak sütun adlarının (`sb_class`) açıkça seçilmesi için şema doğrulaması eklendi.
 - **Sprint 4 Aksiyonu:**
   - Yönetici karar özetini, parça bazlı aksiyon listesini ve etkileşimli Streamlit karar destek uygulamasını (`app/streamlit_app.py`) oluşturmak.
+
+## Sprint 4 Retrospektifi
+- **Tarih:** 2026-11-15
+- **Sonuc:** 200 SKU aksiyon plani, yonetici brifingi, Streamlit arayuzu ve final README tamamlandi (19/19 test).

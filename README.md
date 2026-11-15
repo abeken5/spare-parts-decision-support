@@ -21,3 +21,11 @@ Geleneksel Min/Max kuralları ve normal dağılım varsayan ders kitabı emniyet
 2. **Eşit Hizmet Seviyesinde %28,5 Sermaye Verimliliği:** Mevcut Min/Max kuralını %95,6 Fill Rate seviyesine zorlamak `25.60 M TL` elde tutma maliyeti yaratırken, Blok Bootstrap aynı hizmeti `18.29 M TL` ile **%28,5 daha az işletme sermayesiyle** sağladı.
 3. **Zaman Kovası Hassasiyeti (`107 / 200` Parça):** Günlük veriden aylık toplulaştırmaya geçildiğinde parçaların **%53,5'inin** Syntetos-Boylan sınıfı değişti. Bu nedenle sınıflandırma ve tahmin aylık kovada yapılırken envanter simülasyonu günlük çözünürlükte tutuldu.
 4. **Seyrek Talepte MAPE Yanılgısı:** Sıfır talep aylarında klasik MAPE metriğinin `0/0` nedeniyle tanımsız/sonsuz olduğu gösterildi; model seçiminde ortalamayı koruyan **RMSSE** ve **%2 basitlik toleransı** kullanıldı.
+
+## 2. Kurulum ve Calistirma
+
+``bash
+pip install -r requirements.txt
+pytest
+streamlit run app/streamlit_app.py
+``

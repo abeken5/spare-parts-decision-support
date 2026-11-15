@@ -192,7 +192,7 @@ with tab1:
                 "vital_avg_stockout_days": "Vital Stoksuzluk (Gün)",
             }
         ),
-        use_container_width=True,
+        width='stretch',
         hide_index=True,
     )
 
@@ -214,7 +214,7 @@ with tab2:
     st.subheader(f"Filtrelenmiş Karar Tablosu ({len(filtered)} / 200 Parça)")
     act_summary = filtered["recommended_action"].value_counts().reset_index()
     act_summary.columns = ["Önerilen Aksiyon", "Parça Sayısı"]
-    st.dataframe(act_summary, use_container_width=True, hide_index=True)
+    st.dataframe(act_summary, width='stretch', hide_index=True)
 
     show_cols = [
         "part_id",
@@ -252,7 +252,7 @@ with tab2:
                 "recommended_action": "Aksiyon",
             }
         ),
-        use_container_width=True,
+        width='stretch',
         hide_index=True,
     )
 
@@ -286,3 +286,4 @@ with tab3:
     monthly_ts = hist_ts.groupby("Ay")["demand_qty"].sum().reset_index().set_index("Ay")
     st.markdown("**36 Aylık Tüketim Seyri (İlk 24 Ay Kalibrasyon + Son 12 Ay Backtest)**")
     st.line_chart(monthly_ts)
+
