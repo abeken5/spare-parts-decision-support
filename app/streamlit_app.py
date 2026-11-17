@@ -2,6 +2,12 @@
 import sqlite3
 import pandas as pd
 import streamlit as st
+import subprocess, sys
+from pathlib import Path
+if not Path('data/processed/mro_inventory.db').exists():
+    for sc in ['data/generator.py','src/ingestion/load_sqlite.py','src/segmentation/classify.py','src/forecasting/models.py','src/inventory/classical.py','src/simulation/bootstrap.py','src/evaluation/backtest.py','src/reporting/action_plan.py']:
+        subprocess.run([sys.executable, sc], check=True)
+# ensure_fresh_outputs
 
 DB_PATH = "data/processed/mro_inventory.db"
 
